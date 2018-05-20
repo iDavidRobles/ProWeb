@@ -26,4 +26,10 @@ class ProvWeb extends CI_Controller {
 	{
 		$this->load->view('inicio');
 	}
+	public function modulo($modulo)
+	{
+		$datos = array('modulo' => $modulo);
+		$this->load->view('plantilla',$datos);
+
+	}
 }
