@@ -8,7 +8,9 @@
 
   <body>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-      <a class="navbar-brand" href="#">ProvWeb</a>
+      <a class="navbar-brand" href="#">
+        <img src="/assets/imagenes/logo.png" alt="" width="100px" height="40px">
+      </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
