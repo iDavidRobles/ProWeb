@@ -20,8 +20,14 @@
             <a class="nav-link" href="/">Inicio <span class="sr-only">(current)</span></a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/provweb/modulo/productos">Productos</a>
-
+            <li class="nav-item dropdown">
+  <a class="nav-link dropdown-toggle" href="/"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    Productos
+  </a>
+  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <a class="dropdown-item" href="/provweb/modulo/ingresar">Ingresar</a>
+  </div>
+</li>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/provweb/modulo/cotizaciones">cotizaciones</a>
