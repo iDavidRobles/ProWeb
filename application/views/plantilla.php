@@ -21,10 +21,11 @@
           </li>
           <li class="nav-item">
             <li class="nav-item dropdown">
-  <a class="nav-link dropdown-toggle" href="/"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+  <a class="nav-link dropdown-toggle" href="/provweb/modulo/productos"id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
     Productos
   </a>
   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+    <a class="dropdown-item"href="/provweb/modulo/productos">Productos</a>
     <a class="dropdown-item" href="/provweb/modulo/ingresar">Ingresar</a>
   </div>
 </li>
