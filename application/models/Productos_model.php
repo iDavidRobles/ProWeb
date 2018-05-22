@@ -7,7 +7,7 @@ class Productos_model extends CI_Model {
    }
    public function getProducto($id_producto){
       $this->load->database();
-      $this->db->where("id",$id_producto);
+      $this->db->where("id_producto",$id_producto);
       return $this->db->get("productos")->result_array();
    }
    public function setProductos($datos){

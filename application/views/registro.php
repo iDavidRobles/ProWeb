@@ -1,4 +1,3 @@
-
   <style>
   body{
 	background: #eee !important;
@@ -15,24 +14,26 @@
   <br>
   <br>
   <br>
-    <div class="container-fluid">
+  <body>
+    <div id="FormRegistro" ?>class="container-fluid">
       <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Correo electronico</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa correo">
+    <input type="email" class="form-control" id="correo" aria-describedby="emailHelp" placeholder="Ingresa correo">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword1">Contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+    <input type="password" class="form-control" id="contra" placeholder="Contraseña">
   </div>
   <div class="form-group">
     <label for="exampleInputPassword2">Repetir contraseña</label>
-    <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Repetir contraseña">
+    <input type="password" class="form-control" id="contra2" placeholder="Repetir contraseña">
   </div>
   <div class="form-group form-check">
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
   </div>
-  <button type="submit" class="btn btn-primary">Registrate</button>
+  <button id="btnagregarusuario" type="submit" class="btn btn-primary">Registrate</button>
 </form>
 </div>
+<script src="assets/js/RegistrarU.js" type="text/javascript"></script>

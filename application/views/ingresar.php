@@ -48,6 +48,6 @@ background: #eee !important;
   </div>
 </form>
   </div>
-  <button type="submit" class="btn btn-primary">Ingresar</button>
+  <button id="#btn-agregar-usuario"type="submit" class="btn btn-primary">Ingresar</button>
     </div>
 </form>

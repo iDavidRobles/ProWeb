@@ -1,15 +1,40 @@
-<div class="container" style="padding-top:40px;">
-	<div class="card bg-dark text-white">
-	  <img class="card-img" src=".../780px270/#55595c:#373a3c/text:Card image" alt="Card image">
-	  <div class="card-img-overlay">
-	    <h5 class="card-title">Card title</h5>
-	    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-	    <p class="card-text">Last updated 3 mins ago</p>
-	  </div>
-	</div>
+<style>
+	.carouselExampleIndicators{
+		max-width: 380px;
+		padding: 15px 35px 45px;
+		margin: 0 auto;
+		background-color: #fff;
+		border: 1px solid rgba(0,0,0,0.1);
+	}
+</style>
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img class="d-block w-100" src="assets/imagenes/cale.png" alt="First slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src=".../800x400?auto=yes&bg=666&fg=444&text=Second slide" alt="Second slide">
+    </div>
+    <div class="carousel-item">
+      <img class="d-block w-100" src=".../800x400?auto=yes&bg=555&fg=333&text=Third slide" alt="Third slide">
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
 </div>
-<div class="container" style="padding-top:40px;">
-<div class="card" style="width: 18rem;">
+<div class="container" style="padding-top:30px;">
+<div class="card" style="width: 10rem;">
   <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
   <div class="card-body">
     <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
