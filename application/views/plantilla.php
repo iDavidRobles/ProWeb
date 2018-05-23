@@ -31,6 +31,7 @@
   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
     <a class="dropdown-item"href="/provweb/modulo/productos">Productos</a>
     <a class="dropdown-item" href="/provweb/modulo/ingresar">Ingresar</a>
+      <a class="dropdown-item" href="/provweb/modulo/Editar">Editar</a>
   </div>
 </li>
           </li>
