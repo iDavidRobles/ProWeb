@@ -17,7 +17,7 @@ $(document).ready(function($){
         '  <p class="card-text">'+value.precio_producto+'</p>'+
       '  </div>'+
         '<div class="card-footer">'+
-        ' <small class="text-muted">ProveMAX</small>'+
+        ' <button type="button"  data-toggle="modal" data-target="#modaleditar" class="btn btn-primary btn-sm">Editar</button>'+
       '  </div>'+
     '  </div>'
 
