@@ -18,36 +18,42 @@ background: #eee !important;
   <div class="form-row">
     <div class="form-group col-md-6">
       <label for="inputEmail4">Codigo del producto</label>
-      <input type="email" class="form-control" id="inputEmail4">
+      <input type="text" class="form-control" id="codprod">
     </div>
     <div class="form-group col-md-6">
       <label for="inputPassword4">Nombre</label>
-      <input type="password" class="form-control" id="inputPassword4">
+      <input type="text" class="form-control" id="nomprod">
     </div>
   </div>
   <div class="form-group">
     <label for="inputAddress">Unidad de medida</label>
-    <input type="text" class="form-control" id="inputAddress">
+    <input type="text" class="form-control" id="medprod">
   </div>
   <div class="form-group">
     <label for="inputAddress2">Precio</label>
-    <input type="text" class="form-control" id="inputAddress2">
+    <input type="number" min="0" maxlength="10" class="form-control" id="precio">
+  </div>
+  <div class="form-group">
+    <label for="inputAddress2">Cantidad</label>
+    <input type="number" min="0" maxlength="10" class="form-control" id="canprod">
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputState">Unidad de medida</label>
-      <select id="inputState" class="form-control">
+      <label for="inputState">Imagen</label>
+      <select id="imgprod" class="form-control">
         <option selected>Choose...</option>
         <option>...</option>
       </select>
     </div>
     <form>
   <div class="form-group">
-    <label for="exampleFormControlFile1">Example file input</label>
-    <input type="file" class="form-control-file" id="exampleFormControlFile1">
+    <label for="exampleFormControlFile1">Explorar</label>
+    <input type="file" class="form-control-file" id="subprod">
   </div>
 </form>
   </div>
-  <button id="#btn-agregar-usuario"type="submit" class="btn btn-primary">Ingresar</button>
+  <button id="btnagregarproducto" type="button" class="btn btn-primary">Ingresar</button>
     </div>
 </form>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/RegProducto.js" type="text/javascript"></script>

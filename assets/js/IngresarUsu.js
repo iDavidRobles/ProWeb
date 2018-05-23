@@ -18,7 +18,6 @@ function validar_login(){
   $.ajax(opciones)
     .done(function(respuesta){
       if(respuesta.length >0){
-        alert("fierro");
         window.location.href = "index.php";
       }else {
         alert("Pinche panochon");
