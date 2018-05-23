@@ -2,14 +2,13 @@ $(document).ready(function(){
     $("#btn-ingresar").click(function(e){
         validar_login();
     })
-
 function validar_login(){
   var datos = {
-    usuario : $("#correo").val(),
+    correo : $("#correo").val(),
     clave   : $("#clave").val(),
   }
   var opciones = {
-    url       : 'usuarios/getUsuario',
+    url       : '/usuarios/getUsuario',
     type      : 'POST',
     data      : datos,
     dataType  : 'json',
@@ -18,7 +17,7 @@ function validar_login(){
   $.ajax(opciones)
     .done(function(respuesta){
       if(respuesta.length >0){
-        window.location.href = "index.php";
+        window.location.href = "/provweb/modulo/inicio.php";
       }else {
         alert("Pinche panochon");
       }
