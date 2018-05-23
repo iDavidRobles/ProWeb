@@ -1,26 +1,20 @@
-<div class="container" style="padding-top:40px;">
-<div class="jumbotron jumbotron-fluid">
-  <div class="container">
-    <h1 class="display-4">Nuestros Proveedores</h1>
-    <p class="lead">Contamos con una gran variedad de proveedores de toda la rapublica mexicana e internacionales</p>
-  </div>
-</div>
-</div>
+<br>
+<div class="shadow-sm p-3 mb-5 bg-white rounded">
 <div class="container" style="padding-top:40px;">
 <div class="card" style="width: 18rem;">
-  <img class="card-img-top" src=".../100px180/?text=Image cap" alt="Card image cap">
+  <img class="card-img-top" src="/assets/imagenes/proveedores/campana.jpg" alt="Card image cap">
   <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <h5 class="card-title">Construmat Ferreteria</h5>
+    <p class="card-text">Periférico Nte. 501 esq. López del Castillo Col. Olivares
+Hermosillo, Sonora</p>
   </div>
-  <ul class="list-group list-group-flush">
-    <li class="list-group-item">Cras justo odio</li>
-    <li class="list-group-item">Dapibus ac facilisis in</li>
-    <li class="list-group-item">Vestibulum at eros</li>
-  </ul>
   <div class="card-body">
-    <a href="#" class="card-link">Card link</a>
-    <a href="#" class="card-link">Another link</a>
+    <a href="http://www.construmat.com.mx/ferreteria.htm" class="card-link">Pagina web</a>
   </div>
 </div>
+</div>
+<container>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d13943.267222516148!2d-110.9827453!3d29.1110893!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x4103ab2a063c3058!2sConstrumat+Ferreteria!5e0!3m2!1sen!2smx!4v1527055810956" width="400" height="300" frameborder="0" style="border:0" allowfullscreen></iframe>
+</conteiner>
+<br>
 </div>

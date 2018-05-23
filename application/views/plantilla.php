@@ -36,7 +36,7 @@
 </li>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="/provweb/modulo/cotizaciones">cotizaciones</a>
+            <a class="nav-link" href="/pedidos/index.php">cotizaciones</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/provweb/modulo/proveedores">Proveedores</a>

@@ -19,7 +19,7 @@ function validar_login(){
       if(respuesta.length >0){
         window.location.href = "/provweb/modulo/inicio.php";
       }else {
-        alert("Pinche panochon");
+        alert("Error en los datos");
       }
     })
   }
