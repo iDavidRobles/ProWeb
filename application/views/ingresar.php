@@ -31,11 +31,11 @@ background: #eee !important;
   </div>
   <div class="form-group">
     <label for="inputAddress2">Precio</label>
-    <input type="text" class="form-control" id="precio">
+    <input type="number" min="0" maxlength="10" class="form-control" id="precio">
   </div>
   <div class="form-group">
     <label for="inputAddress2">Cantidad</label>
-    <input type="text" class="form-control" id="canprod">
+    <input type="number" min="0" maxlength="10" class="form-control" id="canprod">
   </div>
   <div class="form-row">
     <div class="form-group col-md-4">

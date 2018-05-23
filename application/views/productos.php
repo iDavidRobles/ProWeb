@@ -1,38 +1,17 @@
 <br>
 <div class="shadow-sm p-3 mb-5 bg-white rounded">
 <div class="container" style="padding-top:40px;">
-  <div class="card-deck">
-  <div class="card">
-    <img class="card-img-top" src="/assets/imagenes/bloque2.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="/assets/imagenes/bloque1.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
-  </div>
-  <div class="card">
-    <img class="card-img-top" src="/assets/imagenes/acero1.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Card title</h5>
-      <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-    </div>
-    <div class="card-footer">
-      <small class="text-muted">Last updated 3 mins ago</small>
-    </div>
+  <div class="input-group mb-3">
+  <input type="text" class="form-control" placeholder="Busque su producto" aria-label="Recipient's username" aria-describedby="basic-addon2">
+  <div class="input-group-append">
+    <button class="btn btn-outline-secondary" type="button">Busqueda</button>
   </div>
 </div>
+    <div class="card-columns"id="allprod">
+    </div>
+  </div>
 </div>
 <br>
 </div>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/ConProducto.js" type="text/javascript"></script>
