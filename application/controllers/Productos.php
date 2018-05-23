@@ -13,9 +13,8 @@ class Productos extends CI_Controller {
     echo json_encode(  $this->productos_model->getProducto($id));
   }
   public function setProductos(){
-    $id=$_POST["id_producto"];
     $this->load->model("productos_model");
-    echo json_encode(  $this->productos_model->setProductos($id));
+    echo json_encode(  $this->productos_model->setProductos($_POST));
   }
 }
  ?>

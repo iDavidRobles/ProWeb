@@ -75,8 +75,8 @@ $query_builder = TRUE;
 
 $db['default'] = array(
 	'dsn'	=> '',
-	'hostname' => 'localhost',
-	'username' => 'root',
+	'hostname' => '192.168.0.13',
+	'username' => 'cales',
 	'password' => '',
 	'database' => 'pedidos',
 	'dbdriver' => 'mysqli',

@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title> titulo</title>
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   </head>
 <style>
   body{
