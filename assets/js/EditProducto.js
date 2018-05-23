@@ -10,8 +10,14 @@ $(document).ready(function($){
   ).done(function(respuesta){
 
     $.each(respuesta,function(key,value){
+      if (value.Imagen != "") {
+        img=value.Imagen
+
+      }else{
+        img="null.png"
+      }
       card='<div class="card">'+
-      '<img class="card-img-top" src="/assets/imagenes/bloque2.png" alt="Card image cap">'+
+      '<img class="card-img-top" src="/assets/imagenes/'+img+'" alt="Card image cap">'+
         '<div class="card-body">'+
           '<h5 class="card-title">'+value.nombre_producto+'</h5>'+
         '  <p class="card-text">'+"Costo: "+value.precio_producto+'</p>'+
