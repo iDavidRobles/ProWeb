@@ -5,9 +5,9 @@ class usuarios_model extends CI_Model {
       $this->load->database();
       return $this->db->get("Perfil")->result_array();
    }
-   public function setUsuarios($datos){
+   public function setUsuario($datos){
       $this->load->database();
-      return $this->db->insert("Perfil",$datos);
+      return $this->db->insert("perfil",$datos);
    }
  }
 ?>

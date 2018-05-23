@@ -7,11 +7,10 @@ class Usuarios extends CI_Controller {
     $this->load->model("usuarios_model");
     echo json_encode(  $this->usuarios_model->getUsuarios());
   }
-  public function setUsuario($datos){
+  public function setUsuario(){
     $datos = array(
-        'id'	->  $_POST['id'] ,
-        'email'->  $_POST['email'],
-        'password'->  $_POST['password']
+        'email'=>  $_POST['correo'],
+        'password'=>  $_POST['contra']
     );
     $this->load->model("usuarios_model");
     echo json_encode($this->usuarios_model->setUsuario($datos));

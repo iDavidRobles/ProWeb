@@ -15,7 +15,7 @@
   <br>
   <br>
   <body>
-    <div id="FormRegistro" ?>class="container-fluid">
+    <div id="FormRegistro" class="container-fluid">
       <form>
   <div class="form-group">
     <label for="exampleInputEmail1">Correo electronico</label>
@@ -33,7 +33,8 @@
     <input type="checkbox" class="form-check-input" id="exampleCheck1">
     <label class="form-check-label" for="exampleCheck1">Recuerdame</label>
   </div>
-  <button id="btnagregarusuario" type="submit" class="btn btn-primary">Registrate</button>
+  <button id="btnagregarusuario" type="button" class="btn btn-primary">Registrate</button>
 </form>
 </div>
-<script src="assets/js/RegistrarU.js" type="text/javascript"></script>
+<script src="/assets/js/jquery-3.3.1.min.js"></script>
+<script src="/assets/js/RegistrarU.js" type="text/javascript"></script>
