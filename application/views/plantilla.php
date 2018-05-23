@@ -68,17 +68,17 @@
               };
             </style>
             <label for="exampleInputEmail1">Correo electronico</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa correo">
+            <input id="correo"type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Ingresa correo">
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Contraseña</label>
-            <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
+            <input id="clave"type="password" class="form-control" id="exampleInputPassword1" placeholder="Contraseña">
           </div>
         </form>
         </div>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Ingresar</button>
+        <button id="btn-ingresar" type="button" class="btn btn-secondary" data-dismiss="modal">Ingresar</button>
         <button type="button" class="btn btn-primary">Registrar</button>
       </div>
     </div>
@@ -94,7 +94,8 @@
        $this->load->view($modulo);
     }
     ?>
-  <script src="/assets/js/jquery-3.3.1.min.js" integrity=""></script>
+<script src="/assets/js/jquery-3.3.1.min.js" integrity=""></script>
 <script src="/assets/js/bootstrap.min.js"></script>
+<script src="/assets/js/IngresarUsu.js" type="text/javascript"></script>
   </body>
 </html>

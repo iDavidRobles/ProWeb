@@ -3,11 +3,13 @@ class usuarios_model extends CI_Model {
 
    public function getUsuarios(){
       $this->load->database();
-      return $this->db->get("Perfil")->result_array();
+      return $this->db->get("perfil")->result_array();
    }
-   public function setUsuario($datos){
+   public function getUsuario($correo,$contra){
       $this->load->database();
-      return $this->db->insert("perfil",$datos);
+      $this->db->where("email",$correo);
+      $this->db->where("password",$contra);
+      return $this->db->get("perfil")->result_array();
    }
  }
 ?>
