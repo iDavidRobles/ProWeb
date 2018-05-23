@@ -2,17 +2,19 @@ $(document).ready(function($){
 
   $("#btnagregarproducto").click(function(e){
 
-  var codigo=$("#codprod").val();
+
   var nombre=$("#nomprod").val();
   var medida=$("#medprod").val();
   var precio=$("#precio").val();
   var cantidad=$("#canprod").val();
+  var imagen=$("imgprod").val();
   var datos={
-    "codigo_producto":codigo,
+
     "nombre_producto":nombre,
     "unidad_medida_producto":medida,
     "precio_producto":precio,
-    "cantidad":cantidad
+    "cantidad":cantidad,
+    "Imagen":imagen
   }
   $.ajax({
           type    : 'POST',
@@ -23,6 +25,7 @@ $(document).ready(function($){
     }
   ).done(function(respuesta){
     console.log(respuesta)
+    location.reload();
   })
 
 })

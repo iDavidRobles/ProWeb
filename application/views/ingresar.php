@@ -17,10 +17,6 @@ background: #eee !important;
   <div class="container-fluid">
   <div class="form-row">
     <div class="form-group col-md-6">
-      <label for="inputEmail4">Codigo del producto</label>
-      <input type="text" class="form-control" id="codprod">
-    </div>
-    <div class="form-group col-md-6">
       <label for="inputPassword4">Nombre</label>
       <input type="text" class="form-control" id="nomprod">
     </div>

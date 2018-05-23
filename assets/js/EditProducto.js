@@ -14,7 +14,7 @@ $(document).ready(function($){
       '<img class="card-img-top" src="/assets/imagenes/bloque2.png" alt="Card image cap">'+
         '<div class="card-body">'+
           '<h5 class="card-title">'+value.nombre_producto+'</h5>'+
-        '  <p class="card-text">'+value.precio_producto+'</p>'+
+        '  <p class="card-text">'+"Costo: "+value.precio_producto+'</p>'+
       '  </div>'+
         '<div class="card-footer">'+
         ' <button type="button"  data-toggle="modal" data-target="#modaleditar" class="btn btn-primary btn-sm">Editar</button>'+
