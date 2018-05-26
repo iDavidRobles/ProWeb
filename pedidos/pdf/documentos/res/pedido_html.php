@@ -44,9 +44,6 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 <td style="width: 50%; text-align: left">
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
-                <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
-                </td>
             </tr>
         </table>
     </page_footer>
