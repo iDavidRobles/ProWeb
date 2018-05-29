@@ -1,18 +1,16 @@
 <?php
-//session_start();
+// session_start();
 include 'include/controller.php';
-// $session_username = $_SESSION['user_name'];
-// $session_role = $_SESSION['role'];
-// if(empty($_SESSION['user_name'])){
-    // header("location:Inventory.php");
-// }
-
+$session_username = $_SESSION['user_name'];
+if(empty($_SESSION['user_name'])){
+    header("Inventario/login.php");
+}
 ?>
     <!DOCTYPE html>
     <html lang="en">
 
     <head>
-        <title>CRUD</title>
+        <title>Inventario</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -42,16 +40,16 @@ include 'include/controller.php';
 
     </head>
     <bodyy onload="myFunction()" style="margin:0;">
-
+        <br>
+        <br>
         <div class="container">
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown"><span class='glyphicon glyphicon-user' aria-hidden='true'></span> <?php echo $session_username . " ($session_role)"; ?>
-                    <span class="caret"></span></button>
+                <button class="btn btn-primary dropdown-toggle btn-sm" type="button" data-toggle="dropdown"><span class='glyphicon glyphicon-user' aria-hidden='true'></span> <?php echo $session_username; ?>
+                    <span class="caret"></span>Session</button>
                 <ul class="dropdown-menu">
-                    <li><a href="#logout" data-toggle="modal"><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span> Logout</a></li>
-                    <li><a href="#changepass" data-toggle="modal"><span class='glyphicon glyphicon-edit' aria-hidden='true'></span> Change Password</a></li>
+                    <li><a href="#logout" data-toggle="modal"><span class='glyphicon glyphicon-log-out' aria-hidden='true'></span> Salir</a></li>
                 </ul>
-                <a href="#add" data-toggle="modal"><button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Item</button></a>
+                <a href="#add" data-toggle="modal"><button type='button' class='btn btn-success btn-sm'><span class='glyphicon glyphicon-plus' aria-hidden='true'></span> Agregar Producto</button></a>
             </div><br>
 
 
@@ -248,11 +246,11 @@ include 'include/controller.php';
                         if(isset($_POST['delete'])){
                             // sql to delete a record
                             $delete_id = $_POST['delete_id'];
-                            $sql = "DELETE FROM tbl_items WHERE id='$delete_id' ";
+                            $sql = "DELETE FROM productos WHERE id_producto='$delete_id' ";
                             if ($conn->query($sql) === TRUE) {
-                                $sql = "DELETE FROM tbl_inventory WHERE id='$delete_id' ";
+                                $sql = "DELETE FROM productos WHERE id_producto='$delete_id' ";
                                 if ($conn->query($sql) === TRUE) {
-                                    $sql = "DELETE FROM tbl_inventory WHERE id='$delete_id' ";
+                                    $sql = "DELETE FROM productos WHERE id_producto='$delete_id' ";
                                     echo '<script>window.location.href="inventory.php"</script>';
                                 } else {
                                     echo "Error deleting record: " . $conn->error;
@@ -441,11 +439,11 @@ include 'include/controller.php';
                         <div class="modal-body">
                             <input type="hidden" name="delete_id" value="<?php echo $id; ?>">
                             <p>
-                                <div class="alert alert-danger">Are you Sure you want to logout <strong><?php echo $_SESSION['user_name']; ?>?</strong></p>
+                                <div class="alert alert-danger">Seguro que desea salir? <strong><?php echo $_SESSION['user_name']; ?>?</strong></p>
                             </div>
                             <div class="modal-footer">
-                                <a href="logout.php"><button type="button" class="btn btn-danger">YES </button></a>
-                                <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+                                <a href="logout.php"><button type="button" class="btn btn-danger">SI </button></a>
+                                <button type="button" class="btn btn-default" data-dismiss="modal">NO</button>
                             </div>
                         </div>
                     </div>

@@ -45,32 +45,76 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     } else {
         $repeat_password = clean($_POST["repeat_password"]);
     }
-}
+
+    if (empty($_POST["edit_item_id"])) {
+        $edit_item_id = "";
+    } else {
+        $edit_item_id = clean($_POST["edit_item_id"]);
+    }
+
+    if (empty($_POST["item_name"])) {
+        $item_nameErr = "Item Name is required";
+    } else {
+        $item_name = clean($_POST["item_name"]);
+    }
+
+
+    if (empty($_POST["item_category"])) {
+        $item_categoryErr = "Category is required";
+    } else {
+        $item_category = clean($_POST["item_category"]);
+    }
+
+    if (empty($_POST["item_description"])) {
+        $item_descriptionErr = "Item Description is required";
+    } else {
+        $item_description = clean($_POST["item_description"]);
+    }
+
+    if (empty($_POST["item_critical_lvl"])) {
+        $item_critical_lvlErr = "Item Critical Level is required";
+    } else {
+        $item_critical_lvl = clean($_POST["item_critical_lvl"]);
+    }
+
+    if (empty($_POST["quantity"])) {
+        $quantityErr = "Quantity is required";
+    } else {
+        $quantity = clean($_POST["quantity"]);
+    }
+
+    if (empty($_POST["received_by"])) {
+        $ureceived_by = "Who received is required";
+    } else {
+        $received_by = clean($_POST["received_by"]);
+    }
+
+
+}   
+
+
 //Login Query
 if(isset($_POST['login'])){
-    $sql = "SELECT * FROM perfil WHERE email='$username'";
+    $sql = "SELECT * FROM tbl_user WHERE username='$username'";
     $result = $conn->query($sql);
+
     if ($result->num_rows > 0) {
         // output data of each row
         while($row = $result->fetch_assoc()) {
             if($row['password'] == $txtpassword){
-                $_SESSION['user_name'] = $row['email'];
-                $passwordErr = '<div class="alert alert-warning">
-                        <strong>Login!</strong>se encontro.
-                        </div>';
-                $username = $row['email'];
-                echo $_SESSION['user_name'];
-                header("Inventario/login.php");
+                $_SESSION['user_name'] = $row['username'];
+                $_SESSION['role'] = $row['role'];
+                header("location:inventory.php");
             } else {
                 $passwordErr = '<div class="alert alert-warning">
-                        <strong>Login!</strong> Fallido.
+                        <strong>Login!</strong> Failed.
                         </div>';
-                $username = $row['email'];
+                $username = $row['username'];
             }
         }
     } else {
         $usernameErr = '<div class="alert alert-danger">
-  <strong>Email </strong>no encontrado.
+  <strong>Username</strong> Not Found.
 </div>';
         $username = "";
     }
