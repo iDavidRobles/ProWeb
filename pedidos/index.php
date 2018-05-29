@@ -16,7 +16,7 @@
    <!-- Latest compiled and minified CSS -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
 	<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css" rel="stylesheet" />
-	<link rel=icon href='http://obedalvarado.pw/img/logo-icon.png' sizes="32x32" type="image/png">
+	<link rel=icon href='pedidos\img\shopping-cart-icon-2-24-227182.png' type="image/png">
   </head>
   <body>
 
@@ -26,8 +26,11 @@
 		  <div class="row-fluid">
 
 			<div class="col-md-12">
-			<h2><span class="glyphicon glyphicon-edit"></span> Cotizacion</h2>
+			<h2><span class="glyphicon glyphicon-shopping-cart"></span> Cotizacion</h2>
 			<hr>
+      <button type="submit" class="btn btn-default">
+        <span  class="glyphicon glyphicon-arrow-left" ></span> Volver
+      </button>
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
 					<div class="col-md-4">
@@ -46,13 +49,15 @@
 						<button type="submit" class="btn btn-default">
 						  <span class="glyphicon glyphicon-print"></span> Imprimir
 						</button>
+            <button type="button" class="btn btn-pago" data-toggle="modal" data-target="#myModal-2">
+						 <span class="glyphicon glyphicon-credit-card"></span> Pago
+						</button>
 					</div>
-				</div>
 			</form>
 			<br><br>
 		<div id="resultados" class='col-md-12'></div><!-- Carga los datos ajax -->
 
-			<!-- Modal -->
+			<!-- Modal seleccion de productos -->
 			<div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
 			  <div class="modal-dialog modal-lg" role="document">
 				<div class="modal-content">
@@ -80,6 +85,39 @@
 			  </div>
 			</div>
 
+      <!-- Modal Pago de Productos-->
+      <div class="modal fade bs-example-modal-lg" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-sl" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+  					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+  					<h4 class="modal-title" id="myModalLabel">Formato de Pago</h4>
+  				  </div>
+            <div class="modal-body">
+            <div class="form-group col-md-9">
+              <label for="exampleInputEmail1">Tarjeta</label>
+              <input type="numer" class="form-control" id="tarjeta" aria-describedby="emailHelp" placeholder="Numero de Tarjeta">
+            </div>
+            <div class="form-group col-md-9">
+              <label for="exampleInputEmail1">NIP</label>
+              <input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV">
+            </div>
+            <div class="form-group col-md-9">
+              <label for="exampleInputEmail1">Total</label>
+              <input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="Total a Pagar">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1"></label>
+              <input type="hidden" value="0000000001" class="form-control" id="destino" aria-describedby="emailHelp" placeholder="Numero de Tarjeta Destino">
+            </div>
+            <div class="modal-footer">
+  					<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
+
+  				  </div>
+          </div>
+          </div>
+        </div>
+      </div>
 			</div>
 		 </div>
 	</div>
