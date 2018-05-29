@@ -31,7 +31,7 @@
   <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
     <a class="dropdown-item"href="/provweb/modulo/productos">Productos</a>
     <a class="dropdown-item" href="/provweb/modulo/ingresar">Ingresar</a>
-      <a class="dropdown-item" href="/provweb/modulo/editar">Editar</a>
+      <a class="dropdown-item" href="/Inventario/login.php">Editar</a>
   </div>
 </li>
           </li>
@@ -43,9 +43,6 @@
           </li>
           <li class="nav-item">
             <a class="nav-link" href="/provweb/modulo/nosotros">Nosotros</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="/provweb/modulo/login">Login</a>
           </li>
         </ul>
       </div>
