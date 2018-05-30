@@ -1,9 +1,5 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -46,9 +42,6 @@
 						<button type="submit" class="btn btn-default">
 						  <span class="glyphicon glyphicon-print"></span> Imprimir
 						</button>
-            <button type="button" class="btn btn-pago" data-toggle="modal" data-target="#myModal-2">
-						 <span class="glyphicon glyphicon-credit-card"></span> Pago
-						</button>
 					</div>
 			</form>
 			<br><br>
@@ -81,39 +74,6 @@
 				</div>
 			  </div>
 			</div>
-
-      <!-- Modal Pago de Productos-->
-      <div class="modal fade bs-example-modal-lg" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-        <div class="modal-dialog modal-sl" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-  					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-  					<h4 class="modal-title" id="myModalLabel">Formato de Pago</h4>
-  				  </div>
-            <div class="modal-body">
-            <div class="form-group col-md-9">
-              <label for="exampleInputEmail1">Tarjeta</label>
-              <input type="numer" class="form-control" id="tarjeta" aria-describedby="emailHelp" placeholder="Numero de Tarjeta">
-            </div>
-            <div class="form-group col-md-9">
-              <label for="exampleInputEmail1">NIP</label>
-              <input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV">
-            </div>
-            <div class="form-group col-md-9">
-              <label  for="exampleInputEmail1">Total</label>
-              <input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="Total a Pagar">
-            </div>
-            <div class="form-group">
-              <label for="exampleInputEmail1"></label>
-              <input type="hidden" value="0000000001" class="form-control" id="destino" aria-describedby="emailHelp" placeholder="Numero de Tarjeta Destino">
-            </div>
-            <div class="modal-footer">
-  					<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-  				  </div>
-          </div>
-          </div>
-        </div>
-      </div>
 			</div>
 		 </div>
 	</div>

@@ -74,6 +74,73 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 <tr>
 	<td colspan=4><span class="pull-right">TOTAL $</span></td>
 	<td><span class="pull-right"><?php echo number_format($sumador_total,2);?></span></td>
-	<td></td>
+	<td>
+		<button type="button" class="btn btn-pago" data-toggle="modal" data-target="#myModal-2">
+		 <span class="glyphicon glyphicon-credit-card"></span> Pago
+		</button>
+	</td>
 </tr>
 </table>
+
+<!-- Modal Pago de Productos-->
+<div class="modal fade bs-example-modal-lg" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+	<div class="modal-dialog modal-sl" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+			<h4 class="modal-title" id="myModalLabel">Formato de Pago</h4>
+			</div>
+			<div class="modal-body">
+				<div class="form-group col-md-9">
+					<label for="exampleInputEmail1">Titular</label>
+					<input type="numer" class="form-control" id="Titular" aria-describedby="emailHelp" placeholder="Titular">
+				</div>
+			<div class="form-group col-md-9">
+				<label for="exampleInputEmail1">Tarjeta</label>
+				<input type="numer" class="form-control" id="tarjeta" aria-describedby="emailHelp" placeholder="Numero de Tarjeta">
+			</div>
+			<div class="form-group col-md-9">
+				<label for="exampleInputEmail1">NIP</label>
+				<input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV">
+			</div>
+			<div class="form-group col-md-9">
+				<label  for="exampleInputEmail1">Total</label>
+				<input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="<?php echo number_format($sumador_total,2);?>"></div>
+			<div class="form-group">
+				<label for="exampleInputEmail1"></label>
+				<input type="hidden" value="0000000001" class="form-control" id="destino" aria-describedby="emailHelp" placeholder="Numero de Tarjeta Destino">
+			</div>
+			<button id="boton-pagar" type="button" class="btn btn-default">Pagar</button>
+		</div>
+		</div>
+	</div>
+</div>
+<script type="text/javascript">
+$(document).ready(function($){
+	alert("simon")
+	$("#boton-pagar").click(function(e){
+		console.log("sexo");
+		var datospago={
+							 destino:$('123456789123456'),
+							 precio:$("#total").val(),
+							 nutar:$("#nutar").val(),
+							 cvc:$("#nip").val(),
+							 tituar:$("#Titular").val()
+						 }
+						 $.ajax({
+					           type    : 'POST',
+					           url     : 'https://horarios.itsonora.net/paquetes/transferencia',
+					           data    : datospago,
+					           dataType: 'json',
+					           encode  : true,
+										 processData: false,
+										 contentType: false
+					     }).done(function(respuesta){
+						     if(respuesta=='1'){
+									 alert("Compra exitosa")
+								 }
+						     // location.reload();
+						   })
+						 })
+					 });
+</script>
