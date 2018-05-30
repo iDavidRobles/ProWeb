@@ -44,6 +44,9 @@
           <li class="nav-item">
             <a class="nav-link" href="/provweb/modulo/nosotros">Nosotros</a>
           </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/Inventario/login.php">Login</a>
+          </li>
         </ul>
       </div>
     </nav>

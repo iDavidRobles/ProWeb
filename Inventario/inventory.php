@@ -187,41 +187,6 @@ if(empty($_SESSION['user_name'])){
 
         <?php
                         }
-          //               if(isset($_POST['change_pass'])){
-          //                   $sql = "SELECT password FROM tbl_user WHERE username='$session_username'";
-          //                   $result = $conn->query($sql);
-          //
-          //                   if ($result->num_rows > 0) {
-          //                       // output data of each row
-          //                       while($row = $result->fetch_assoc()) {
-          //                           if($row['password'] != $current_password){
-          //                               echo "<script>window.alert('Invalid Password');</script>";
-          //                               $passwordErr = '<div class="alert alert-warning">
-          //               <strong>Password!</strong> Invalid.
-          //               </div>';
-          //                           } elseif($new_password != $repeat_password) {
-          //                               echo "<script>window.alert('Password Not Match!');</script>";
-          //                               $passwordErr = '<div class="alert alert-warning">
-          //               <strong>Password!</strong> Not Match.
-          //               </div>';
-          //                           } else{
-          //                               $sql = "UPDATE tbl_user SET password='$new_password' WHERE username='$session_username'";
-          //
-          //                               if ($conn->query($sql) === TRUE) {
-          //                                   echo "<script>window.alert('Password Successfully Updated');</script>";
-          //                               } else {
-          //                                   echo "Error updating record: " . $conn->error;
-          //                               }
-          //                           }
-          //                       }
-          //                   } else {
-          //                       $usernameErr = '<div class="alert alert-danger">
-          // <strong>Username</strong> Not Found.
-          // </div>';
-          //                       $username = "";
-          //                   }
-          //               }
-
                         //Update Items
                         if(isset($_POST['editar_item'])){
                           $id= $_POST['id_producto'];
@@ -244,7 +209,6 @@ if(empty($_SESSION['user_name'])){
                         }
 
                         if(isset($_POST['delete'])){
-                            // sql to delete a record
                             $delete_id = $_POST['delete_id'];
                             $sql = "DELETE FROM productos WHERE id_producto='$delete_id' ";
                             if ($conn->query($sql) === TRUE) {
@@ -260,114 +224,49 @@ if(empty($_SESSION['user_name'])){
                             }
                         }
                     }
-
                     //Add Item
                     if(isset($_POST['add_item'])){
-                        $item_name = $_POST['item_name'];
-                        $item_code = $_POST['item_code'];
-                        $item_category = $_POST['item_category'];
-                        $item_description = $_POST['item_description'];
-                        $sql = "INSERT INTO tbl_items
-            (item_name,
-            item_code,
-            item_description,
-            item_category,
-            item_critical_lvl,
-            item_date)
+                        $nombre = $_POST['nombre_pro'];
+                        $precio= $_POST['precio_pro'];
+                        $imagen = $_POST['imagen_pro'];
+                        $cantidad= $_POST['cantidad_pro'];
+                        $status=$_POST['status_pro'];
+                        $sql = "INSERT INTO productos
+            (nombre_producto,
+            status_producto,
+            unidad_medida_producto,
+            precio_producto,
+            Imagen,
+            cantidad)
             VALUES (
-            '$item_name',
-            '$item_code',
-            '$item_description',
-            '$item_category',
-            '$item_critical_lvl',
-            '$date'
+            '$nombre',
+            '$status',
+            'pza',
+            '$precio',
+            '$imagen',
+            '$cantidad'
             )";
                         if ($conn->query($sql) === TRUE) {
-                            $add_inventory_query = "INSERT INTO tbl_inventory
-            (item_name,
-            item_code,
-            date,
-            qty
-            )
-            VALUES (
-            '$item_name',
-            '$item_code',
-            '$date',
-            '0'
-            )";
+                            $add_inventory_query = "INSERT INTO pedidos2
+                            (nombre_producto,
+                            status_producto,
+                            unidad_medida_producto,
+                            precio_producto,
+                            Imagen,
+                            cantidad)
+                            VALUES (
+                            '$nombre',
+                            '$status',
+                            'pza',
+                            '$precio',
+                            '$imagen',
+                            '$cantidad'
+                            )";
 
                             if ($conn->query($add_inventory_query) === TRUE) {
                                 echo '<script>window.location.href="inventory.php"</script>';
                             } else {
                                 echo "Error: " . $sql . "<br>" . $conn->error;
-                            }
-                        } else {
-                            echo "Error: " . $sql . "<br>" . $conn->error;
-                        }
-                    }
-
-                    if(isset($_POST['add_inventory'])){
-                        $remarks = clean($_POST["remarks"]);
-                        $sql = "INSERT INTO tbl_issuance
-            (
-            date,
-            item_name,
-            item_code,
-            qty,
-            in_out,
-            remarks
-            )
-            VALUES (
-            '$date_time',
-            '$item_name',
-            '$item_code',
-            '$quantity',
-            'in',
-            '$remarks'
-            )";
-                        if ($conn->query($sql) === TRUE) {
-                            $add_inv = "UPDATE tbl_inventory SET
-                qty=(qty + '$quantity')
-                WHERE id='$id' ";
-                            if ($conn->query($add_inv) === TRUE) {
-                                echo '<script>window.location.href="inventory.php"</script>';
-                            } else {
-                                echo "Error updating record: " . $conn->error;
-                            }
-                        } else {
-                            echo "Error: " . $sql . "<br>" . $conn->error;
-                        }
-                    }
-
-                    if(isset($_POST['minus_inventory'])){
-                        $remarks = clean($_POST["remarks"]);
-                        $sql = "INSERT INTO tbl_issuance
-            (
-            date,
-            item_name,
-            item_code,
-            qty,
-            sender_receiver,
-            in_out,
-            remarks
-            )
-            VALUES (
-            '$date_time',
-            '$item_name',
-            '$item_code',
-            '$quantity',
-            '$received_by',
-            'out',
-            '$remarks'
-            )";
-                        if ($conn->query($sql) === TRUE) {
-                            $add_inv = "UPDATE tbl_inventory SET
-                qty=(qty - '$quantity')
-                WHERE id='$id' ";
-                            if ($conn->query($add_inv) === TRUE) {
-                                echo '<script>window.location.href="inventory.php"</script>';
-                            } else {
-                                echo "Error updating record: " . $conn->error;
                             }
                         } else {
                             echo "Error: " . $sql . "<br>" . $conn->error;
@@ -385,41 +284,41 @@ if(empty($_SESSION['user_name'])){
                     <div class="modal-content">
                         <div class="modal-header">
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
-                            <h4 class="modal-title">Add Item</h4>
+                            <h4 class="modal-title">Agregar Producto</h4>
                         </div>
                         <div class="modal-body">
                             <form method="post" class="form-horizontal" role="form">
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="item_name">Item Name:</label>
+                                    <label class="control-label col-sm-2" for="nombre_pro">Nombre producto:</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="item_name" name="item_name" placeholder="Item Name" autofocus required>
+                                        <input type="text" class="form-control" id="nombre_pro" name="nombre_pro"  autofocus required>
                                     </div>
-                                    <label class="control-label col-sm-2" for="item_code">Item Code:</label>
+                                    <label class="control-label col-sm-2" for="item_code">Precio producto:</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="item_code" name="item_code" placeholder="Item Code" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="item_category">Category:</label>
-                                    <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="item_category" name="item_category" placeholder="Item Category" required>
-                                    </div>
-                                    <label class="control-label col-sm-2" for="item_critical_lvl">Critical Level:</label>
-                                    <div class="col-sm-4">
-                                        <input type="number" class="form-control" id="item_critical_lvl" name="item_critical_lvl" required>
+                                        <input type="text" class="form-control" id="precio_pro" name="precio_pro"  required>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-sm-2" for="item_sub_category">Description:</label>
+                                    <label class="control-label col-sm-2" for="item_category">Imagen:</label>
+                                    <div class="col-sm-4">
+                                        <input type="file" class="form-control" id="imagen_pro" mame="imagen_pro">
+                                    </div>
+                                    <label class="control-label col-sm-2" for="item_critical_lvl">Cantidad producto:</label>
+                                    <div class="col-sm-4">
+                                        <input type="number" class="form-control" id="cantidad_pro" name="cantidad_pro" required>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="control-label col-sm-2" for="item_sub_category">Estatus:</label>
                                     <div class="col-sm-10">
-                                        <textarea class="form-control" id="item_description" name="item_description" required></textarea>
+                                        <textarea class="form-control" id="status_pro" name="status_pro" required>Si</textarea>
                                     </div>
                                 </div>
 
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" class="btn btn-primary" name="add_item"><span class="glyphicon glyphicon-plus"></span> Add</button>
-                            <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancel</button>
+                            <button type="submit" class="btn btn-primary" name="add_item"><span class="glyphicon glyphicon-plus"></span>Agregar</button>
+                            <button type="button" class="btn btn-warning" data-dismiss="modal"><span class="glyphicon glyphicon-remove-circle"></span> Cancelar</button>
                         </div>
                     </div>
                     </form>

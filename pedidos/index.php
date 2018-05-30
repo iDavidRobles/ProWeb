@@ -20,16 +20,13 @@
   </head>
   <body>
 
-
-
     <div class="container">
 		  <div class="row-fluid">
-
 			<div class="col-md-12">
 			<h2><span class="glyphicon glyphicon-shopping-cart"></span> Cotizacion</h2>
 			<hr>
-      <button type="submit" class="btn btn-default">
-        <span  class="glyphicon glyphicon-arrow-left" ></span> Volver
+      <button href="/provweb/modulo/productos" type="submit" class="btn btn-default">
+        <span  class="glyphicon glyphicon-arrow-left" ></span> <a href="http://localhost/provweb/modulo/productos">Volver</a>
       </button>
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
@@ -103,7 +100,7 @@
               <input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV">
             </div>
             <div class="form-group col-md-9">
-              <label for="exampleInputEmail1">Total</label>
+              <label  for="exampleInputEmail1">Total</label>
               <input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="Total a Pagar">
             </div>
             <div class="form-group">
@@ -112,7 +109,6 @@
             </div>
             <div class="modal-footer">
   					<button type="button" class="btn btn-default" data-dismiss="modal">Aceptar</button>
-
   				  </div>
           </div>
           </div>
