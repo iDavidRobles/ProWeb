@@ -124,7 +124,7 @@
         <!-- Content -->
         <h6 class="text-uppercase font-weight-bold">ProveMAX</h6>
         <hr class="teal accent-3 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
-        <p>PROVEMAX una organización con los mejores roductos y ervicios para usted.</p>
+        <p>PROVEMAX una organización con los mejores productos y servicios para usted.</p>
 
       </div>
       <!-- Grid column -->
