@@ -84,13 +84,13 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 
 <!-- Modal Pago de Productos-->
 <div class="modal fade bs-example-modal-lg" id="myModal-2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-	<div class="modal-dialog modal-sl" role="document">
+	<div id="lacompra" class="modal-dialog modal-sl" role="document">
 		<div class="modal-content">
 			<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title" id="myModalLabel">Formato de Pago</h4>
 			</div>
-			<div class="modal-body">
+			<div id="modalcompra"class="modal-body">
 				<div class="form-group col-md-9">
 					<label for="exampleInputEmail1">Titular</label>
 					<input type="numer" class="form-control" id="Titular" aria-describedby="emailHelp" placeholder="Titular">
@@ -115,11 +115,32 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 		</div>
 	</div>
 </div>
-<script type="text/javascript">
+<div id="myModalExito"class="modal" tabindex="-1" role="dialog">
+	<br>
+	<br>
+	<br>
+	<br>
+<div class="modal-dialog" role="document">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title">Compra exitosa</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+	<span aria-hidden="true">&times;</span>
+</button>
+</div>
+<div class="modal-body">
+<p>Compra exitosa!</p>
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+<button type="button" class="btn btn-primary">Aceptar</button>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript" >
 $(document).ready(function($){
-	alert("simon")
 	$("#boton-pagar").click(function(e){
-		console.log("sexo");
 		var datospago={
 							 destino:$('123456789123456'),
 							 precio:$("#total").val(),
@@ -137,7 +158,12 @@ $(document).ready(function($){
 										 contentType: false
 					     }).done(function(respuesta){
 						     if(respuesta=='1'){
-									 alert("Compra exitosa")
+
+									 $('#myModalExito').modal('show');
+									 $("#myModal-2").modal('hide');
+
+								 }else{
+									 alert("Solicitud fallida")
 								 }
 						     // location.reload();
 						   })
