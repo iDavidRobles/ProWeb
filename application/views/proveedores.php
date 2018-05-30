@@ -26,7 +26,6 @@
 </div> -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
-
     <h1 class="display-4">Nuestros Proveedores</h1>
     <p class="lead">Contamos con las mejores marcas proveedoras del país.</p>
   </div>
@@ -180,6 +179,26 @@
         </div>
       </div>
     </div>
+    <!-- <div class="card">
+      <div class="container" style="padding-top:10px;">
+      <img class="card-img-top" src="/assets/imagenes/proveedores/bra.png" alt="Card image cap">
+      <div class="card-body">
+        <div class="card-footer">
+          <a target="_blank" href="https://www.brazzers.com/home/" class="card-link">www.brazzers.com</a>
+        </div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <div class="container" style="padding-top:10px;">
+      <img class="card-img-top" src="/assets/imagenes/proveedores/nepe.gif" alt="Card image cap">
+      <div class="card-body">
+        <div class="card-footer">
+          <a target="_blank" href="https://javfinder.is/" class="card-link">www.javfinder.is</a>
+        </div>
+        </div>
+      </div>
+    </div> -->
 </div>
 <br>
 </div>

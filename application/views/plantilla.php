@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
   <head>
+    <link rel="shortcut icon" href="assets\imagenes\iconos\favicon.ico" />
     <meta charset="utf-8">
-    <title> titulo</title>
+    <title>PROVEMAX</title>
     <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
   </head>
 <style>
