@@ -10,7 +10,7 @@ class Cotizacion extends CI_Controller {
       $this->db->where("id_producto",$value["id"]);
       $producto = $this->db->get("productos")->result_array()[0];
 
-      $res[$key] = array(
+      $temp[$key] = array(
         "id"=>$producto["id_producto"],
         "cantidad"=>$value["cantidad"],
         "unidad"=>$producto["unidad_medida_producto"],
@@ -18,9 +18,10 @@ class Cotizacion extends CI_Controller {
         "nombre"=>$producto["nombre_producto"],
         "subtotal"=>($value["cantidad"]*$producto["precio_producto"])
       );
-      $total += $res[$key]["subtotal"];
+      $total += $temp[$key]["subtotal"];
 
     }
+    $res["detalles"]=$temp;
     $res["fecha"]=date('m/d/Y g:ia');
     $res["total"]=$total;
     echo json_encode($res);
