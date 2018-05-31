@@ -1,9 +1,5 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
+
 session_start();
 $session_id= session_id();
 if (isset($_POST['id'])){$id=$_POST['id'];}
@@ -130,10 +126,13 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 </div>
 <div class="modal-body">
 <p>Compra exitosa!</p>
+<p>COMPROBANTE DE PAGO</p>
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-<button type="button" class="btn btn-primary">Aceptar</button>
+<button  type="submit" class="btn btn-default">
+	<span class="glyphicon glyphicon-print"></span> Compronte de pago
+</button>
 </div>
 </div>
 </div>
@@ -161,11 +160,9 @@ $(document).ready(function($){
 
 									 $('#myModalExito').modal('show');
 									 $("#myModal-2").modal('hide');
-
 								 }else{
-									 alert("Solicitud fallida")
+									 alert("Solicitud fallida, verifique su informacion")
 								 }
-						     // location.reload();
 						   })
 						 })
 					 });

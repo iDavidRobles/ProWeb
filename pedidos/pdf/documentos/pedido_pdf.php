@@ -1,9 +1,5 @@
 <?php
-	/*-------------------------
-	Autor: Obed Alvarado
-	Web: obedalvarado.pw
-	Mail: info@obedalvarado.pw
-	---------------------------*/
+
 	 ob_start();
 	session_start();
 	/* Connect To Database*/
@@ -20,7 +16,7 @@
 	}
 
 	require_once(dirname(__FILE__).'/../html2pdf.class.php');
-		
+
 	//Variables por GET
 	$proveedor=intval($_GET['proveedor']);
 	$transporte=mysqli_real_escape_string($con,(strip_tags($_REQUEST['transporte'], ENT_QUOTES)));
@@ -29,14 +25,14 @@
 	//Fin de variables por GET
 	$sql=mysqli_query($con, "select LAST_INSERT_ID(numero) as last from pedidos order by id_pedido desc limit 0,1 ");
 	$rw=mysqli_fetch_array($sql);
-	$numero_pedido=$rw['last']+1;	
+	$numero_pedido=$rw['last']+1;
 	$perfil=mysqli_query($con,"select * from perfil limit 0,1");//Obtengo los datos de la emprea
 	$rw_perfil=mysqli_fetch_array($perfil);
-	
+
 	$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$proveedor' limit 0,1");//Obtengo los datos del proveedor
 	$rw_proveedor=mysqli_fetch_array($sql_proveedor);
     // get the HTML
-    
+
      include(dirname('__FILE__').'/res/pedido_html.php');
     $content = ob_get_clean();
 

@@ -44,6 +44,9 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 <td style="width: 50%; text-align: left">
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
+                <td style="width: 50%; text-align: right">
+                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
+                </td>
             </tr>
         </table>
     </page_footer>
@@ -54,19 +57,40 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 <img style="width: 100%;" src="../../img/logo.jpg" alt="Logo"><br>
 
             </td>
-			<td style="width: 75%;text-align:right;font-size:24px;color:#2c3e50">
-		COTIZACION PROVWEB
-			</td>
+
 
         </tr>
     </table>
     <br>
+    <table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
+		<tr>
+			<td class='pumpkin' style="width:45%; ">CONTACTO</td>
+			<td  style="width:10%; "></td>
+		</tr>
+		<tr>
+			<td style="width:45%; ">
+				Dirección: <?php echo("Avenida tecnologico")?><br>
+				Teléfono: <?php echo("6625242125")?><br>
+				Email: <?php echo('Ventas@ProveMax.com')?>
+			</td>
+			<td  style="width:10%; "></td>
+
+		</tr>
+	</table>
 	<br>
 	<table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
 		<tr>
+			<td class='pumpkin' style="width:33%; ">CLIENTE</td>
+			<td class='pumpkin' style="width:34%; ">RFC</td>
 			<td class='pumpkin' style="width:33%; text-align:right ">FECHA</td>
 		</tr>
 		<tr>
+			<td style="width:33%; ">
+				<?php echo $transporte;?>
+			</td>
+			<td style="width:34%; ">
+				<?php echo $condiciones;?>
+			</td>
 			<td  style="width:33%; text-align:right"><?php echo date("d-m-Y");?></td>
 		</tr>
 	</table>
@@ -137,33 +161,37 @@ while ($row=mysqli_fetch_array($sql))
 	}
 	$total_neto=number_format($sumador_total,2,'.','');
 	$iva=intval($rw_perfil['iva']);
-	$total_iva=($total_neto*0.16);
+	$total_iva=($total_neto* $iva) / 100;
 	$total_iva=number_format($total_iva,2,'.','');
 	$sumador_total=$total_neto+$total_iva;
 
 ?>
 	</table>
-    <table cellspacing="0" style="width: 100%; border: solid 0px black; background: white; font-size: 11pt;padding:1mm;">
-        <tr>
-			<th style="width: 50%; text-align: right;"></th>
-            <th style="width: 37%; text-align: right;">SUBTOTAL &#36;</th>
-            <th style="width: 13%; text-align: right;"><?php echo number_format($total_neto,2);?></th>
-        </tr>
-		<tr>
-			<th class='pumpkin' style="width: 50%; text-align: center;">Comentarios o instruciones especiales</th>
-            <th style="width: 37%; text-align: right;">IVA  &#36;</th>
-            <th style="width: 13%; text-align: right;"><?php echo number_format($total_iva,2);?></th>
-        </tr>
-		<tr>
-			<td class='border-left border-bottom border-right' style="width: 50%;"><?php echo $comentarios;?></td>
-            <th  style="width: 37%; text-align: right;">TOTAL &#36; </th>
-            <th style="width: 13%; text-align: right;"><?php echo number_format($sumador_total,2);?></th>
-        </tr>
-    </table>
+	<table cellspacing="0" style="width: 100%; border: solid 0px black; background: white; font-size: 11pt;padding:1mm;">
+	        <tr>
+				<th style="width: 50%; text-align: right;"></th>
+	            <th style="width: 37%; text-align: right;">TOTAL &#36;</th>
+	            <th style="width: 13%; text-align: right;"><?php echo number_format($total_neto,2);?></th>
+	        </tr>
+			<tr>
+				<th class='pumpkin' style="width: 50%; text-align: center;">Direccion del envio</th>
+	        </tr>
+			<tr>
+				<td class='border-left border-bottom border-right' style="width: 50%;"><?php echo $comentarios;?></td>
+	        </tr>
+	    </table>
+			<br>
+			<table>
+			<tr>
+				<th class='pumpkin' style="width: 50%; text-align: center;">CONCEPTO</th>
+					</tr>
+			<tr>
+				<td class='border-left border-bottom border-right' style="width: 50%;"><?php echo("PAGADO")?></td>
+					</tr>
+			</table>
 
 
 	<br>
-
 </page>
 
 <?php

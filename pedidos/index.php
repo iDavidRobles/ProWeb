@@ -27,9 +27,17 @@
 			<form class="form-horizontal" role="form" id="datos_pedido">
 				<div class="row">
 					<div class="col-md-4">
-						<label for="comentarios" class="control-label">Comentarios</label>
-						<input type="text" class="form-control input-sm" id="comentarios" placeholder="Comentarios o instruciones especiales">
+						<label for="comentarios" class="control-label">Cliente</label>
+						<input type="text" class="form-control input-sm" id="Clientes1" placeholder="Comentarios o instruciones especiales">
 					</div>
+          <div class="col-md-4">
+            <label for="comentarios" class="control-label">RFC</label>
+            <input type="text" class="form-control input-sm" id="RFC1" placeholder="RFC del cliente">
+          </div>
+          <div class="col-md-4">
+            <label for="comentarios" class="control-label">Domicilio</label>
+            <input type="text" class="form-control input-sm" id="Domicilio1" placeholder="Domicilio del cliente">
+          </div>
 				</div>
 
 
@@ -38,9 +46,6 @@
 					<div class="pull-right">
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-plus"></span> Agregar productos
-						</button>
-						<button type="submit" class="btn btn-default">
-						  <span class="glyphicon glyphicon-print"></span> Imprimir
 						</button>
 					</div>
 			</form>
@@ -158,9 +163,9 @@
 
 		$("#datos_pedido").submit(function(){
 		  var proveedor = $("#proveedor").val();
-		  var transporte = $("#transporte").val();
-		  var condiciones = $("#condiciones").val();
-		  var comentarios = $("#comentarios").val();
+		  var transporte = $("#Clientes1").val();
+		  var condiciones = $("#RFC1").val();
+		  var comentarios = $("#Domicilio1").val();
 			VentanaCentrada('./pdf/documentos/pedido_pdf.php?proveedor='+proveedor+'&transporte='+transporte+'&condiciones='+condiciones+'&comentarios='+comentarios,'Pedido','','1024','768','true');
 	 	});
 	</script>
