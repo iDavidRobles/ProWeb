@@ -47,7 +47,7 @@
 						<button type="button" class="btn btn-info" data-toggle="modal" data-target="#myModal">
 						 <span class="glyphicon glyphicon-plus"></span> Agregar productos
 						</button>
-            <a type="button" class="btn btn-info"  data-target="#myModal"href='javascript:window.print(); void 0;'>Imprimir</a> 
+            <a type="button" class="btn btn-info"  data-target="#myModal"href='javascript:window.print(); void 0;'>Imprimir</a>
 					</div>
 			</form>
 			<br><br>

@@ -29,8 +29,8 @@
 	$perfil=mysqli_query($con,"select * from perfil limit 0,1");//Obtengo los datos de la emprea
 	$rw_perfil=mysqli_fetch_array($perfil);
 
-	$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$proveedor' limit 0,1");//Obtengo los datos del proveedor
-	$rw_proveedor=mysqli_fetch_array($sql_proveedor);
+	$sql_proveedor=mysqli_query($con,"select * from proveedores where id_proveedor='$proveedor' limit 0,1");
+	//Obtengo los datos del proveedor
     // get the HTML
 
      include(dirname('__FILE__').'/res/pedido_html.php');

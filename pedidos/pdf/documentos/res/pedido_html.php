@@ -44,9 +44,6 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
                 <td style="width: 50%; text-align: left">
                     P&aacute;gina [[page_cu]]/[[page_nb]]
                 </td>
-                <td style="width: 50%; text-align: right">
-                    &copy; <?php echo "obedalvarado.pw "; echo  $anio=date('Y'); ?>
-                </td>
             </tr>
         </table>
     </page_footer>
@@ -69,6 +66,7 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 		</tr>
 		<tr>
 			<td style="width:45%; ">
+			<br>
 				Dirección: <?php echo("Avenida tecnologico")?><br>
 				Teléfono: <?php echo("6625242125")?><br>
 				Email: <?php echo('Ventas@ProveMax.com')?>
@@ -77,6 +75,26 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 
 		</tr>
 	</table>
+	<br>
+	<table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
+	<?php
+	$sql_id2=mysqli_query($con,"SELECT id_pedido FROM `pedidos` WHERE 1 ORDER by id_pedido DESC LIMIT 1");
+	while ($row=mysqli_fetch_array($sql_id2))
+		{
+	$id_tmp2=$row["id_pedido"];
+		}
+	 ?>
+	<tr>
+		<td class='pumpkin' style="width:45%; ">NUMERO DE PEDIDO</td>
+		<td  style="width:10%; "></td>
+	</tr>
+	<tr>
+		<td style="width:45%; ">
+		<?php echo $id_tmp2+1; ?>
+		</td>
+		<td  style="width:10%; "></td>
+	</tr>
+</table>
 	<br>
 	<table cellspacing="0" style="width: 100%; text-align: left; font-size: 10pt;">
 		<tr>
@@ -103,7 +121,6 @@ table.page_footer {width: 100%; border: none; background-color: white; padding: 
 
     <table cellspacing="0" style="width: 100%; border: solid 0px #7f8c8d; text-align: center; font-size: 10pt;padding:1mm;">
         <tr >
-            <th class="pumpkin" style="width: 14% ">CODIGO</th>
 			<th class="pumpkin" style="width: 7% ">CANT.</th>
             <th class="pumpkin" style="width: 55%">DESCRIPCION</th>
             <th class="pumpkin" style="width: 14%;text-align:right">PRECIO UNIT.</th>
@@ -119,10 +136,23 @@ while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
 	$id_producto=$row["id_producto"];
-	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
 	$id_marca_producto=$row['id_marca_producto'];
+	$status=$row['status_producto'];
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "pedidos";
+	$conn = new mysqli($servername, $username, $password, $dbname);
+	$nuevo=$status-$cantidad;
+	$sql_update="UPDATE productos SET status_producto='$nuevo' WHERE id_producto=$id_producto";
+	if (mysqli_query($conn, $sql_update)) {
+
+} else {
+    echo "Error updating record: " . mysqli_error($conn);
+}
+
 	if (!empty($id_marca_producto))
 	{
 	$sql_marca=mysqli_query($con,"select nombre_marca from marcas where id_marca='$id_marca_producto'");
@@ -146,7 +176,6 @@ while ($row=mysqli_fetch_array($sql))
 	?>
 
         <tr>
-            <td class='<?php echo $clase;?>' style="width: 14%; text-align: center"><?php echo $codigo_producto; ?></td>
 			<td class='<?php echo $clase;?>' style="width: 7%; text-align: center"><?php echo $cantidad; ?></td>
             <td class='<?php echo $clase;?>' style="width: 55%; text-align: left"><?php echo $nombre_producto.$marca_producto;?></td>
             <td class='<?php echo $clase;?>' style="width: 14%; text-align: right"><?php echo $precio_venta_f;?></td>
@@ -156,14 +185,19 @@ while ($row=mysqli_fetch_array($sql))
 
 	<?php
 	//Insert en la tabla detalle_cotizacion
-	$insert_detail=mysqli_query($con, "INSERT INTO detalle_pedido VALUES ('','$numero_pedido','$id_producto','$cantidad','$precio_venta_r')");
+
+	$sql_id=mysqli_query($con,"SELECT id_pedido FROM `pedidos` WHERE 1 ORDER by id_pedido DESC LIMIT 1");
+	while ($row=mysqli_fetch_array($sql_id))
+		{
+	$id_tmp1=$row["id_pedido"];
+		}
+		$pedido=$id_tmp1+1;
+	$insert_detail=mysqli_query($con, "INSERT INTO detalle_pedido VALUES ('','$pedido','$id_producto','$nombre_producto','$cantidad','$precio_venta_r')");
 	$nums++;
+
 	}
 	$total_neto=number_format($sumador_total,2,'.','');
-	$iva=intval($rw_perfil['iva']);
-	$total_iva=($total_neto* $iva) / 100;
-	$total_iva=number_format($total_iva,2,'.','');
-	$sumador_total=$total_neto+$total_iva;
+	$sumador_total=$total_neto;
 
 ?>
 	</table>
@@ -196,6 +230,8 @@ while ($row=mysqli_fetch_array($sql))
 
 <?php
 $date=date("Y-m-d H:i:s");
-$insert=mysqli_query($con,"INSERT INTO pedidos VALUES ('','$numero_pedido','$date','$proveedor','$transporte','$condiciones','$comentarios')");
+$insert_detail=mysqli_query($con, "INSERT INTO pedidos VALUES ('$id_tmp','$total_neto','$id_producto','$transporte','0')");
+// $insert=mysqli_query($con,"INSERT INTO pedidos VALUES ('','$numero_pedido','$date','$proveedor','$transporte','$condiciones','$comentarios')");
 $delete=mysqli_query($con,"DELETE FROM tmp WHERE session_id='".$session_id."'");
+
 ?>

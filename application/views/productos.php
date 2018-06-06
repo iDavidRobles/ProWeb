@@ -12,6 +12,7 @@
           <th style="width:160px">ILUSTRACION</th>
           <th style="width:220px">NOMBRE</th>
           <th style="width:140px">PRECIO</th>
+          <th style="width:140px">DISPONIBLE</th>
         </tr>
         <tr>
           <td colspan="4">

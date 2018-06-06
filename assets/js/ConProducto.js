@@ -20,6 +20,7 @@ $(document).ready(function($){
       '<img class="card-img-top" src="/assets/imagenes/'+img+'" alt="Card image cap">'+'</td>'+
           '<td>'+value.nombre_producto+'</td>'+
           '<td>'+value.precio_producto+'</td>'+
+          '<td>'+value.status_producto+'</td>'+
           '</tr>'
     $("#tabla").append(card)
     })

@@ -7,7 +7,7 @@
 	if($action == 'ajax'){
 		// escaping, additionally removing everything that could be (html/javascript-) code
      $q = mysqli_real_escape_string($con,(strip_tags($_REQUEST['q'], ENT_QUOTES)));
-		 $aColumns = array('codigo_producto', 'nombre_producto');//Columnas de busqueda
+		 $aColumns = array('nombre_producto');//Columnas de busqueda
 		 $sTable = "productos";
 		 $sWhere = "";
 		if ( $_GET['q'] != "" )
@@ -42,10 +42,11 @@
 			<div class="table-responsive">
 			  <table class="table">
 				<tr  class="warning">
-					<th>Producto</th>
-					<th>Agregar</th>
-					<th><span class="pull-right">Cant.</span></th>
-					<th><span class="pull-right">Precio</span></th>
+					<th>PRODUCTO</th>
+					<th>CANTIDAD</th>
+					<th><span class="pull-right">PRECIO</span></th>
+					<th><span class="pull-right">DISPONIBILIDAD</span></th>
+					<th><span class="pull-right">AGREGAR</span></th>
 					<th style="width: 36px;"></th>
 				</tr>
 				<?php
@@ -53,18 +54,35 @@
 					$id_producto=$row['id_producto'];
 					$nombre_producto=$row['nombre_producto'];
 					$precio_venta=$row["precio_producto"];
+					$status=$row["status_producto"];
 					$precio_venta=number_format($precio_venta,2);
 					?>
 					<tr>
 						<td><?php echo $nombre_producto; ?></td>
 						<td class='col-xs-1'>
 						<div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $id_producto; ?>"  value="1" >
+						<input type="text" class="form-control" style="text-align:right" id="cantidad_<?php echo $id_producto; ?>"  value="1" required onkeypress="return valida(event)">
 						</div></td>
-						<td class='col-xs-2'><div class="pull-right">
-						<input type="text" class="form-control" style="text-align:right" id="precio_venta_<?php echo $id_producto; ?>"  value="<?php echo $precio_venta;?>" >
-						</div></td>
-						<td ><span class="pull-right"><a href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i></a></span></td>
+						<td class='col-xs-2'>
+						<div class="pull-right">
+						<input type="text" class="form-control" style="text-align:right" id="precio_venta_<?php echo $id_producto; ?>"  value="<?php echo $precio_venta;?>" required onkeypress="return valida(event)">
+						</div>
+						<td class='col-xs-1'>
+						<div class="pull-right">
+							<label for=""><?php echo $status; ?></label>
+						</div>
+					</td>
+					</td>
+						<td ><span class="pull-right">
+							<?php if ($status>0): ?>
+							<a href="#" onclick="agregar('<?php echo $id_producto ?>')"><i class="glyphicon glyphicon-plus"></i>
+							</a>
+							<?php endif
+							 ?>
+							 <?php if ($status<=0): ?>
+							 	<a style="color:red;">AGOTADO</a>
+							 <?php endif; ?>
+						</span></td>
 					</tr>
 					<?php
 				}
@@ -76,7 +94,23 @@
 				</tr>
 			  </table>
 			</div>
+
 			<?php
 		}
 	}
 ?>
+<script>
+function valida(e){
+tecla = (document.all) ? e.keyCode : e.which;
+
+//Tecla de retroceso para borrar, siempre la permite
+if (tecla==8){
+		return true;
+}
+
+// Patron de entrada, en este caso solo acepta numeros
+patron =/[0-9]/;
+tecla_final = String.fromCharCode(tecla);
+return patron.test(tecla_final);
+}
+</script>

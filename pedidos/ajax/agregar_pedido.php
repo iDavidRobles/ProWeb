@@ -13,6 +13,7 @@ if (isset($_POST['precio_venta'])){$precio_venta=$_POST['precio_venta'];}
 if (!empty($id) and !empty($cantidad) and !empty($precio_venta))
 {
 $insert_tmp=mysqli_query($con, "INSERT INTO tmp (id_producto,cantidad_tmp,precio_tmp,session_id) VALUES ('$id','$cantidad','$precio_venta','$session_id')");
+
 }
 if (isset($_GET['id']))//codigo elimina un elemento del array
 {
@@ -27,6 +28,7 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 	<th>DESCRIPCION</th>
 	<th><span class="pull-right">PRECIO UNIT.</span></th>
 	<th><span class="pull-right">PRECIO TOTAL</span></th>
+	<th><span class"pull-right">ESTATUS</th>
 	<th></th>
 </tr>
 <?php
@@ -35,10 +37,10 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 	while ($row=mysqli_fetch_array($sql))
 	{
 	$id_tmp=$row["id_tmp"];
-	$codigo_producto=$row['codigo_producto'];
 	$cantidad=$row['cantidad_tmp'];
 	$nombre_producto=$row['nombre_producto'];
 	$id_marca_producto=$row['id_marca_producto'];
+	$status=$row['status_producto'];
 	if (!empty($id_marca_producto))
 	{
 	$sql_marca=mysqli_query($con, "select nombre_marca from marcas where id_marca='$id_marca_producto'");
@@ -54,13 +56,15 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 	$precio_total_f=number_format($precio_total,2);//Precio total formateado
 	$precio_total_r=str_replace(",","",$precio_total_f);//Reemplazo las comas
 	$sumador_total+=$precio_total_r;//Sumador
-
 		?>
 		<tr>
+			<?php
+			 ?>
 			<td><?php echo $cantidad;?></td>
-			<td><?php echo $nombre_producto.$marca_producto;?></td>
+			<td><?php echo $nombre_producto;?></td>
 			<td><span class="pull-right"><?php echo $precio_venta_f;?></span></td>
 			<td><span class="pull-right"><?php echo $precio_total_f;?></span></td>
+			<td><span class="pull-right"><?php echo $status; ?><span></td>
 			<td ><span class="pull-right"><a href="#" onclick="eliminar('<?php echo $id_tmp ?>')"><i class="glyphicon glyphicon-trash"></i></a></span></td>
 		</tr>
 		<?php
@@ -86,22 +90,22 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 			<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 			<h4 class="modal-title" id="myModalLabel">Formato de Pago</h4>
 			</div>
-			<div id="modalcompra"class="modal-body">
+			<div id="modalcompra"class="modal-body" >
 				<div class="form-group col-md-9">
 					<label for="exampleInputEmail1">Titular</label>
 					<input type="numer" class="form-control" id="Titular" aria-describedby="emailHelp" placeholder="Titular">
 				</div>
 			<div class="form-group col-md-9">
 				<label for="exampleInputEmail1">Tarjeta</label>
-				<input type="numer" class="form-control" id="tarjeta" aria-describedby="emailHelp" placeholder="Numero de Tarjeta">
+				<input type="numer" class="form-control" id="tarjeta" aria-describedby="emailHelp" placeholder="Numero de Tarjeta"onkeypress="return valida(event)">
 			</div>
 			<div class="form-group col-md-9">
 				<label for="exampleInputEmail1">NIP</label>
-				<input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV">
+				<input type="numer"  class="form-control" id="nip" aria-describedby="emailHelp" placeholder="CVV" onkeypress="return valida(event)">
 			</div>
 			<div class="form-group col-md-9">
 				<label  for="exampleInputEmail1">Total</label>
-				<input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="<?php echo number_format($sumador_total,2);?>"></div>
+				<input type="number" class="form-control" id="total" aria-describedby="emailHelp" placeholder="<?php echo number_format($sumador_total,2);?>"onkeypress="return valida(event)"></div>
 			<div class="form-group">
 				<label for="exampleInputEmail1"></label>
 				<input type="hidden" value="0000000001" class="form-control" id="destino" aria-describedby="emailHelp" placeholder="Numero de Tarjeta Destino">
@@ -119,24 +123,46 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 <div class="modal-dialog" role="document">
 <div class="modal-content">
 <div class="modal-header">
-<h5 class="modal-title">Compra exitosa</h5>
+
 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 	<span aria-hidden="true">&times;</span>
 </button>
 </div>
 <div class="modal-body">
-<p>Compra exitosa!</p>
-<p>COMPROBANTE DE PAGO</p>
+	<div class="alert alert-success" role="alert">
+	  <strong>Transaccion realizada con exito</strong>
+	</div>
 </div>
 <div class="modal-footer">
 <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
 <button  type="submit" class="btn btn-default">
-	<span class="glyphicon glyphicon-print"></span> Compronte de pago
+	<span class="glyphicon glyphicon-print">
+	</span> Compronte de pago
 </button>
 </div>
 </div>
 </div>
 </div>
+<div id="MyModalError"class="modal" tabindex="-1" role="dialog">
+	<br>
+	<br>
+	<br>
+	<br>
+	<div class="modal-dialog" role="document">
+	<div class="modal-content">
+	<div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		 <span aria-hidden="true">&times;</span>
+	 </button>
+	</div>
+	<div class="modal-body">
+		<div class="alert alert-danger" role="alert">
+		  <strong>Error en el pago</strong> Verifique sus datos o contacte a su banco para mas informacion.
+	</div>
+	</div>
+	</div>
+</div>
+
 <script type="text/javascript" >
 $(document).ready(function($){
 	$("#boton-pagar").click(function(e){
@@ -149,7 +175,7 @@ $(document).ready(function($){
 						 }
 						 $.ajax({
 					           type    : 'POST',
-					           url     : 'https://horarios.itsonora.net/paquetes/transferencia',
+					           url     : 'https://horarios.itsonora.net/banco/transferencia',
 					           data    : datospago,
 					           dataType: 'json',
 					           encode  : true,
@@ -157,13 +183,27 @@ $(document).ready(function($){
 										 contentType: false
 					     }).done(function(respuesta){
 						     if(respuesta=='1'){
-
 									 $('#myModalExito').modal('show');
 									 $("#myModal-2").modal('hide');
 								 }else{
-									 alert("Solicitud fallida, verifique su informacion")
+									 $('#MyModalError').modal('show')
 								 }
 						   })
 						 })
 					 });
+</script>
+<script>
+function valida(e){
+tecla = (document.all) ? e.keyCode : e.which;
+
+//Tecla de retroceso para borrar, siempre la permite
+if (tecla==8){
+		return true;
+}
+
+// Patron de entrada, en este caso solo acepta numeros
+patron =/[0-9]/;
+tecla_final = String.fromCharCode(tecla);
+return patron.test(tecla_final);
+}
 </script>

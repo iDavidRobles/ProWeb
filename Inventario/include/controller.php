@@ -6,7 +6,7 @@ $date = date("Y-m-d");
 $date_time = date("Y-m-d h:i:sa");
 
 $usernameErr = $passwordErr = $current_passwordErr = $new_passwordErr = $repeat_passwordErr = $edit_item_idErr = $item_nameErr = $item_categoryErr = $item_descriptionErr = $item_critical_lvlErr = $quantityErr = $uomErr = $received_by = "";
-$username = $txtpassword  = $current_password  = $new_password  = $repeat_password  = $edit_item_id  = $item_name  = $item_category  = $item_description  = $item_critical_lvl  = $quantity = $received_by = $remarks = "";
+$username = $session_username = $txtpassword  = $current_password  = $new_password  = $repeat_password  = $edit_item_id  = $item_name  = $item_category  = $item_description  = $item_critical_lvl  = $quantity = $received_by = $remarks = "";
 
 function clean($data) {
     $data = trim($data);
@@ -59,7 +59,7 @@ if(isset($_POST['login'])){
                         <strong>Login!</strong>se encontro.
                         </div>';
                 $username = $row['email'];
-                echo $_SESSION['user_name'];
+                $_SESSION['role'] = $row['role'];
                 header("Inventario/login.php");
             } else {
                 $passwordErr = '<div class="alert alert-warning">
@@ -70,7 +70,7 @@ if(isset($_POST['login'])){
         }
     } else {
         $usernameErr = '<div class="alert alert-danger">
-  <strong>Email </strong>no encontrado.
+  <strong>Usuario </strong>no encontrado.
 </div>';
         $username = "";
     }

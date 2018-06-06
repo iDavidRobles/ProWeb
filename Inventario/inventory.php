@@ -1,7 +1,7 @@
 <?php
-// session_start();
 include 'include/controller.php';
 $session_username = $_SESSION['user_name'];
+$session_role = $_SESSION['role'];
 if(empty($_SESSION['user_name'])){
     header("Inventario/login.php");
 }
@@ -85,7 +85,6 @@ if(empty($_SESSION['user_name'])){
                             $item_code = $row['status_producto'];
                             $item_category = $row['unidad_medida_producto'];
                             $item_description = $row['precio_producto'];
-                            $qty = $row['cantidad'];
 
             echo "<tr>
             <td>$id</td>
@@ -119,7 +118,7 @@ if(empty($_SESSION['user_name'])){
                             <div class="form-group">
                               <label class="control-label col-sm-2" for="nombre_producto">ID:</label>
                               <div class="col-sm-4">
-                                  <input type="text" class="form-control" id="id_producto" name="id_producto" value="<?php echo $id; ?>" placeholder="Item Name" required autofocus>
+                                  <input type="text" class="form-control" onkeypress="return valida(event)"id="id_producto" name="id_producto" value="<?php echo $id; ?>" placeholder="Item Name" required autofocus>
                               </div>
                               <label class="control-label col-sm-2" for="nombre_producto">Nombre:</label>
                               <div class="col-sm-4">
@@ -127,16 +126,16 @@ if(empty($_SESSION['user_name'])){
               </div>
               <label class="control-label col-sm-2" for="item_code">Disponivilidad</label>
               <div class="col-sm-4">
-                <input type="text" readonly class="form-control" id="status_producto" name="status_producto" value="<?php echo $item_code; ?>" placeholder="Item Code" required>
+                <input type="text"  class="form-control"onkeypress="return valida(event)" id="status_producto" name="status_producto" value="<?php echo $item_code; ?>" placeholder="Item Code" required>
               </div>
               <br>
               <div class="form-group">
                 <br>
                 <label class="control-label col-sm-2" for="item_description">Precio:</label>
                 <div class="col-sm-4">
-                  <textarea cclass="form-control" id="precio_producto" name="precio_producto" placeholder="Description" required style="width: 100%;"><?php echo $item_description; ?></textarea>
+                  <textarea cclass="form-control" id="precio_producto"onkeypress="return valida(event)"  name="precio_producto" placeholder="Description" required style="width: 100%;"><?php echo $item_description; ?></textarea>
                 </div>
-                <label class="control-label col-sm-2" for="item_category">Category:</label>
+                <label class="control-label col-sm-2" for="item_category">Unidad de medida:</label>
                 <div class="col-sm-4">
 
                   <input type="text" class="form-control" id="unidad_medida_producto" name="unidad_medida_producto" value="<?php echo $item_category; ?>" placeholder="Category" required>
@@ -229,22 +228,20 @@ if(empty($_SESSION['user_name'])){
                         $nombre = $_POST['nombre_pro'];
                         $precio= $_POST['precio_pro'];
                         $imagen = $_POST['imagen_pro'];
-                        $cantidad= $_POST['cantidad_pro'];
-                        $status=$_POST['status_pro'];
+                        $status=$_POST['cantidad_pro'];
                         $sql = "INSERT INTO productos
             (nombre_producto,
             status_producto,
             unidad_medida_producto,
             precio_producto,
-            Imagen,
-            cantidad)
+            Imagen
+          )
             VALUES (
             '$nombre',
             '$status',
             'pza',
             '$precio',
-            '$imagen',
-            '$cantidad'
+            '$imagen'
             )";
                         if ($conn->query($sql) === TRUE) {
                             $add_inventory_query = "INSERT INTO pedidos2
@@ -252,15 +249,14 @@ if(empty($_SESSION['user_name'])){
                             status_producto,
                             unidad_medida_producto,
                             precio_producto,
-                            Imagen,
-                            cantidad)
+                            Imagen
+                            )
                             VALUES (
                             '$nombre',
                             '$status',
                             'pza',
                             '$precio',
-                            '$imagen',
-                            '$cantidad'
+                            '$imagen'
                             )";
 
                             if ($conn->query($add_inventory_query) === TRUE) {
@@ -295,7 +291,7 @@ if(empty($_SESSION['user_name'])){
                                     </div>
                                     <label class="control-label col-sm-2" for="item_code">Precio producto:</label>
                                     <div class="col-sm-4">
-                                        <input type="text" class="form-control" id="precio_pro" name="precio_pro"  required>
+                                        <input type="text" class="form-control" id="precio_pro" name="precio_pro"  required onkeypress="return valida(event)">
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -305,13 +301,7 @@ if(empty($_SESSION['user_name'])){
                                     </div>
                                     <label class="control-label col-sm-2" for="item_critical_lvl">Cantidad producto:</label>
                                     <div class="col-sm-4">
-                                        <input type="number" class="form-control" id="cantidad_pro" name="cantidad_pro" required>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label class="control-label col-sm-2" for="item_sub_category">Estatus:</label>
-                                    <div class="col-sm-10">
-                                        <textarea class="form-control" id="status_pro" name="status_pro" required>Si</textarea>
+                                        <input type="number" class="form-control" id="cantidad_pro" name="cantidad_pro" required onkeypress="return valida(event)">
                                     </div>
                                 </div>
 
@@ -348,5 +338,19 @@ if(empty($_SESSION['user_name'])){
                     </div>
                 </div>
                 </body>
-
     </html>
+    <script>
+function valida(e){
+    tecla = (document.all) ? e.keyCode : e.which;
+
+    //Tecla de retroceso para borrar, siempre la permite
+    if (tecla==8){
+        return true;
+    }
+
+    // Patron de entrada, en este caso solo acepta numeros
+    patron =/[0-9]/;
+    tecla_final = String.fromCharCode(tecla);
+    return patron.test(tecla_final);
+}
+</script>

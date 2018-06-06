@@ -7,6 +7,10 @@ if(isset($_SESSION['user_name'])){
 <!DOCTYPE html>
 <html lang="en">
     <head>
+      <br>
+      <center>
+        <button type="button"  name="button"><a class="button" href="http://localhost/">Regresar</a></button>
+    </center>
         <meta charset="utf-8">
         <title>Login</title>
 
