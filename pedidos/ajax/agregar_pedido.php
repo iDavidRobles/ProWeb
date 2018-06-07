@@ -41,14 +41,6 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 	$nombre_producto=$row['nombre_producto'];
 	$id_marca_producto=$row['id_marca_producto'];
 	$status=$row['status_producto'];
-	if (!empty($id_marca_producto))
-	{
-	$sql_marca=mysqli_query($con, "select nombre_marca from marcas where id_marca='$id_marca_producto'");
-	$rw_marca=mysqli_fetch_array($sql_marca);
-	$nombre_marca=$rw_marca['nombre_marca'];
-	$marca_producto=" ".strtoupper($nombre_marca);
-	}
-	else {$marca_producto='';}
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
@@ -166,13 +158,15 @@ $delete=mysqli_query($con, "DELETE FROM tmp WHERE id_tmp='".$id."'");
 <script type="text/javascript" >
 $(document).ready(function($){
 	$("#boton-pagar").click(function(e){
+						alert("simon")
 		var datospago={
-							 destino:$('123456789123456'),
-							 precio:$("#total").val(),
-							 nutar:$("#nutar").val(),
-							 cvc:$("#nip").val(),
+							 destino:('6017647983563668'),
+							 importe:$("#total").val(),
+							 origen:$("#tarjeta").val(),
+							 cvv:$("#nip").val(),
 							 tituar:$("#Titular").val()
 						 }
+						 alert(JSON.stringify(datospago))
 						 $.ajax({
 					           type    : 'POST',
 					           url     : 'https://horarios.itsonora.net/banco/transferencia',
@@ -182,6 +176,7 @@ $(document).ready(function($){
 										 processData: false,
 										 contentType: false
 					     }).done(function(respuesta){
+								 alert(respuesta);
 						     if(respuesta=='1'){
 									 $('#myModalExito').modal('show');
 									 $("#myModal-2").modal('hide');

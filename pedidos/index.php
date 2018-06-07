@@ -144,7 +144,6 @@
 		}
 			});
 		}
-
 			function eliminar (id)
 		{
 
@@ -171,4 +170,5 @@
 	 	});
 	</script>
   </body>
+
 </html>

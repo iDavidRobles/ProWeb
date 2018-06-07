@@ -1,29 +1,6 @@
 <br>
 <div class="shadow-sm p-3 mb-5 bg-white rounded">
 <div class="container" style="padding-top:40px;">
-
-<!-- <div class="card-columns" style="width: 20rem;">
-  <div class="card">
-    <img class="card-img-top" src="/assets/imagenes/proveedores/Skil.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">Herramientas Eléctricas Skil</h5>
-    </div>
-    <div class="card-footer">
-      <a target="_blank" href="http://www.skil.com.mx/mx/es/pagina-principal/pagina-principal.html" class="card-link">www.skil.com.mx</a>
-    </div>
-  </div>
-  <div class="card-deck" style="width: 20rem;">
-  <div class="card">
-    <img class="card-img-top" src="/assets/imagenes/proveedores/Ternium.png" alt="Card image cap">
-    <div class="card-body">
-      <h5 class="card-title">El acero de México</h5>
-    </div>
-    <div class="card-footer">
-      <a target="_blank" href="http://www.ternium.com/" class="card-link">www.ternium.com</a>
-    </div>
-  </div>
-  </div>
-</div> -->
 <div class="jumbotron jumbotron-fluid">
   <div class="container">
     <h1 class="display-4">Nuestros Proveedores</h1>

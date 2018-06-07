@@ -153,14 +153,6 @@ while ($row=mysqli_fetch_array($sql))
     echo "Error updating record: " . mysqli_error($conn);
 }
 
-	if (!empty($id_marca_producto))
-	{
-	$sql_marca=mysqli_query($con,"select nombre_marca from marcas where id_marca='$id_marca_producto'");
-	$rw_marca=mysqli_fetch_array($sql_marca);
-	$nombre_marca=$rw_marca['nombre_marca'];
-	$marca_producto=" ".strtoupper($nombre_marca);
-	}
-	else {$marca_producto='';}
 	$precio_venta=$row['precio_tmp'];
 	$precio_venta_f=number_format($precio_venta,2);//Formateo variables
 	$precio_venta_r=str_replace(",","",$precio_venta_f);//Reemplazo las comas
@@ -177,7 +169,7 @@ while ($row=mysqli_fetch_array($sql))
 
         <tr>
 			<td class='<?php echo $clase;?>' style="width: 7%; text-align: center"><?php echo $cantidad; ?></td>
-            <td class='<?php echo $clase;?>' style="width: 55%; text-align: left"><?php echo $nombre_producto.$marca_producto;?></td>
+            <td class='<?php echo $clase;?>' style="width: 55%; text-align: left"><?php echo $nombre_producto;?></td>
             <td class='<?php echo $clase;?>' style="width: 14%; text-align: right"><?php echo $precio_venta_f;?></td>
             <td class='<?php echo $clase;?>' style="width: 10%; text-align: right"><?php echo $precio_total_f;?></td>
 
